@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import sv_ttk
 
 
 def personal():
@@ -66,7 +67,7 @@ def transport():
     distance_label = tk.Label(main_window1, text="How long do your travel on vehicle per month in km:")
     distance_label.pack()
     distance = tk.DoubleVar()
-    distance_now = tk.Label(main_window1, text="")
+    distance_now = tk.Label(main_window1, text="0km")
     distance_now.pack()
     def get_current_value():
         return '{:.2f}'.format(distance.get())
@@ -93,4 +94,57 @@ def transport():
 
     main_window1.mainloop()
 
-transport()
+
+def waste():
+    main_window = tk.Tk()
+    main_window.geometry("900x600")
+    main_window.title("Waste Data")
+    greeting = tk.Label(main_window, text="Here you will enter information about your waste")
+    greeting.pack()
+
+    bag_label = tk.Label(main_window, text="How big is your waste bag?")
+    bag_label.pack()
+    bag_var = tk.StringVar(main_window)
+    bag_var.set("Select")
+    bag_options = ["Small", "Medium", "Large", "Extra Large"]
+    bag_menu = tk.OptionMenu(main_window, bag_var, *bag_options)
+    bag_menu.configure(fg="Green")
+    bag_menu.pack()
+
+    amount_label = tk.Label(main_window, text="How many trash bags do you take out per day?")
+    amount_label.pack()
+    amount = tk.DoubleVar()
+    amount_now = tk.Label(main_window, text="0bags")
+    amount_now.pack()
+    def get_current_value():
+        return '{:.0f}'.format(amount.get())
+    def slider_changed(event):
+        amount_now.configure(text=get_current_value()+"bags")
+    amount_slider = ttk.Scale(
+        main_window,
+        from_=1,
+        to=10,
+        orient="horizontal",
+        variable=amount,
+        command=slider_changed
+    )
+    amount_slider.pack()
+
+    recycle_label = tk.Label(main_window, text="Do you recycle any materials below?")
+    recycle_label.pack()
+    recycle_var = tk.StringVar(main_window)
+    recycle_var.set("Select")
+    recycle_options = ["Plastic", "Paper", "Metal", "Glass"]
+    recycle_menu = tk.OptionMenu(main_window, recycle_var, *recycle_options)
+    recycle_menu.configure(fg="Green")
+    recycle_menu.pack()
+
+
+    sv_ttk.set_theme("dark")
+
+    img_path = "../Img/trash.png"
+    img = tk.PhotoImage(file=img_path)
+    img_label = tk.Label(main_window, image=img)
+    img_label.image = img
+    img_label.pack()
+    main_window.mainloop()
