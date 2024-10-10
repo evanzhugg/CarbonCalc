@@ -16,7 +16,7 @@ personal = tk.Button(
     width = 25,
     height = 5,
     fg = "green",
-    command=personal()
+    command=personal
 )
 personal.pack()
 
@@ -43,5 +43,13 @@ energy = tk.Button(
     fg = "black"
 )
 energy.pack()
+
+consumption = tk.Button(
+    text = "Consumption",
+    width = 25,
+    height = 5,
+    fg = "gold"
+)
+consumption.pack()
 
 main_window.mainloop()
