@@ -278,5 +278,3 @@ def consumption():
     cloth_slider.pack()
 
     main_window.mainloop()
-
-consumption()
