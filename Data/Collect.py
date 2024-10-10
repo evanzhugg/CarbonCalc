@@ -3,15 +3,21 @@ from tkinter import ttk
 import sv_ttk
 import os
 
-
-
 def personal():
+    data = {}
+    def submit():
+        data['height'] = height.get()
+        data['weight'] = weight.get()
+        data['gender'] = gender_var.get()
+        data['diet'] = diet_var.get()
+        data['social'] = social_var.get()
+        main_window0.quit()
+        main_window0.destroy()
+
     main_window0 = tk.Tk()
     main_window0.geometry("900x600")
     main_window0.title("Personal Data")
-    greeting = tk.Label(main_window0,
-        text="\u2B63\u2B63Please enter your personal data below \u2B63\u2B63"
-    )
+    greeting = tk.Label(main_window0, text="\u2B63\u2B63Please enter your personal data below \u2B63\u2B63")
     greeting.pack()
 
     height_label = tk.Label(main_window0, text="Your height:")
@@ -21,7 +27,7 @@ def personal():
 
     weight_label = tk.Label(main_window0, text="Your weight:")
     weight_label.pack()
-    weight = tk.Entry(main_window0, width=20,)
+    weight = tk.Entry(main_window0, width=20)
     weight.pack()
 
     gender_label = tk.Label(main_window0, text="Your gender:")
@@ -45,13 +51,24 @@ def personal():
     social_var = tk.StringVar(main_window0)
     social_var.set("Select")
     social_options = ["Never", "Often", "Sometimes"]
-    social_menu = tk.OptionMenu(main_window0, social_var, *diet_options)
+    social_menu = tk.OptionMenu(main_window0, social_var, *social_options)
     social_menu.pack()
 
+    submit_button = tk.Button(main_window0, text="Submit", command=submit)
+    submit_button.pack()
 
     main_window0.mainloop()
+    return data
 
 def transport():
+    data = {}
+    def submit():
+        data['method'] = method_var.get()
+        data['distance'] = distance.get()
+        data['flight'] = flight_var.get()
+        main_window1.quit()
+        main_window1.destroy()
+
     main_window1 = tk.Tk()
     main_window1.geometry("900x600")
     main_window1.title("Transport Data")
@@ -93,11 +110,21 @@ def transport():
     flight_menu = tk.OptionMenu(main_window1, flight_var, *flight_options)
     flight_menu.pack()
 
+    submit_button = tk.Button(main_window1, text="Submit", command=submit)
+    submit_button.pack()
 
     main_window1.mainloop()
-
+    return data
 
 def waste():
+    data = {}
+    def submit():
+        data['bag_size'] = bag_var.get()
+        data['amount'] = amount.get()
+        data['recycle'] = recycle_var.get()
+        main_window.quit()
+        main_window.destroy()
+
     main_window = tk.Tk()
     main_window.geometry("900x600")
     main_window.title("Waste Data")
@@ -141,9 +168,7 @@ def waste():
     recycle_menu.configure(fg="Green")
     recycle_menu.pack()
 
-
     sv_ttk.set_theme("dark")
-
 
     script_dir = os.path.dirname(__file__)
     img_path = os.path.join(script_dir, "../Img/trash.png")
@@ -151,9 +176,24 @@ def waste():
     img_label = tk.Label(main_window, image=img)
     img_label.image = img
     img_label.pack()
+
+    submit_button = tk.Button(main_window, text="Submit", command=submit)
+    submit_button.pack()
+
     main_window.mainloop()
+    return data
 
 def energy():
+    data = {}
+    def submit():
+        data['heating_source'] = source_var.get()
+        data['cooking_system'] = cook_var.get()
+        data['efficiency'] = efficiency_var.get()
+        data['pc_tv_hours'] = hours.get()
+        data['internet_hours'] = internet.get()
+        main_window.quit()
+        main_window.destroy()
+
     main_window = tk.Tk()
     main_window.title("Energy Data")
     main_window.geometry("900x600")
@@ -222,9 +262,21 @@ def energy():
     )
     internet_slider.pack()
 
+    submit_button = tk.Button(main_window, text="Submit", command=submit)
+    submit_button.pack()
+
     main_window.mainloop()
+    return data
 
 def consumption():
+    data = {}
+    def submit():
+        data['shower_frequency'] = shower_var.get()
+        data['grocery_spending'] = grocery.get()
+        data['clothes_bought'] = cloth.get()
+        main_window.quit()
+        main_window.destroy()
+
     main_window = tk.Tk()
     main_window.title("Consumption information")
     main_window.geometry("900x600")
@@ -261,7 +313,7 @@ def consumption():
     cloth_label = tk.Label(main_window, text="How many clothes do you buy monthly?")
     cloth_label.pack()
     cloth = tk.IntVar()
-    cloth_now = tk.Label(main_window, text="0 cloths")
+    cloth_now = tk.Label(main_window, text="0 clothes")
     cloth_now.pack()
     def get_current1_value():
         return '{:.0f}'.format(cloth.get())
@@ -277,4 +329,8 @@ def consumption():
     )
     cloth_slider.pack()
 
+    submit_button = tk.Button(main_window, text="Submit", command=submit)
+    submit_button.pack()
+
     main_window.mainloop()
+    return data
