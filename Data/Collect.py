@@ -7,7 +7,7 @@ def personal():
     data = {}
     def submit():
         data['height'] = height.get()
-        data['weight'] = weight.get()
+        data['weight'] = int(weight.get())
         data['gender'] = gender_var.get()
         data['diet'] = diet_var.get()
         data['social'] = social_var.get()

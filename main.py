@@ -64,7 +64,6 @@ consumption_button = tk.Button(
     command=consumption
 )
 consumption_button.pack()
-
 save_button = tk.Button(
     text="Save Data",
     width=25,
